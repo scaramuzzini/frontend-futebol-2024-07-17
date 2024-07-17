@@ -13,7 +13,7 @@ const headers = {
         }
 */
 
-const AddTime = () => {
+const AddTime = ({onTimeAdded}) => {
     const [nome,setNome] = useState('');
 
     const handleSubmit = async (e) => {
@@ -32,7 +32,7 @@ const AddTime = () => {
                 });
             console.log(response);
             setNome('');
-            //onTimeAdded(response.data);
+            onTimeAdded(response.data);
         } catch (error) {
             console.error('Falha ao criar novo time:' + error);
         }

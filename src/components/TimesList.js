@@ -22,13 +22,17 @@ function TimesList() {
         }
     };
 
+    const handleTimeAdded = (novoTime) => {
+        setTimes([...times, novoTime]);
+    };
+
     useEffect(() => {
         fetchTimes();
     },[]);
     return (
         <>
             <h2>Tabela de times</h2>
-            <AddTime/>
+            <AddTime onTimeAdded={handleTimeAdded}/>
             <table>
                 <thead>
                     <tr>
