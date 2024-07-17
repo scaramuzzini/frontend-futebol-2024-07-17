@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'sonner'
 const headers = {
     "ngrok-skip-browser-warning": "123"
 };
@@ -21,7 +22,8 @@ const AddTime = ({onTimeAdded}) => {
         e.preventDefault();
 
         if (nome === '' || nome.length < 4) {
-            alert('erro, nome invalido');
+            toast.error('erro, nome invalido')
+            // alert('erro, nome invalido');
         } else {
             console.log(nome);
             

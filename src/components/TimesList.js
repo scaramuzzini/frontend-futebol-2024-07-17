@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import AddTime from './AddTime';
 import EditTime from './EditTime'
-
+import { toast } from 'sonner'
 const headers = {
     "ngrok-skip-browser-warning": "123"
 };
@@ -26,6 +26,7 @@ function TimesList() {
 
     const handleTimeAdded = (novoTime) => {
         setTimes([...times, novoTime]);
+        toast.success('Time criado com sucesso')
     };
 
     const handleDelete = async (id) => {
