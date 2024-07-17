@@ -70,8 +70,10 @@ function TimesList() {
                             <td>{time.id}</td>
                             <td>{time.nome}</td>
                             <td>{time.titulos}</td>
-                            <td><button onClick={() => handleDelete(time.id)}>Remover </button> </td>
-                            <td><button onClick={() => handleEdit(time)}>Editar</button> </td>
+                            <td>
+                                <button onClick={() => handleDelete(time.id)}>Remover </button>
+                                <button onClick={() => handleEdit(time)}>Editar</button> 
+                            </td>
                         </tr>
                     ))}
                 </tbody>
