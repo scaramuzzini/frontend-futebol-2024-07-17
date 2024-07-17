@@ -26,6 +26,15 @@ function TimesList() {
         setTimes([...times, novoTime]);
     };
 
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`https://6349-45-236-9-52.ngrok-free.app/times/${id}`);
+            setTimes(times.filter(time=>time.id !== id));
+        } catch (error) {
+            console.error('Erro ao remover time:'+error);
+        }
+    };
+
     useEffect(() => {
         fetchTimes();
     },[]);
@@ -39,6 +48,7 @@ function TimesList() {
                         <th>ID</th>
                         <th>Nome do time</th>
                         <th>Títulos</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,6 +57,7 @@ function TimesList() {
                             <td>{time.id}</td>
                             <td>{time.nome}</td>
                             <td>{time.titulos}</td>
+                            <td><button onClick={() => handleDelete(time.id)}>Remover </button> </td>
                         </tr>
                     ))}
                 </tbody>
