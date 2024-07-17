@@ -4,7 +4,7 @@ const headers = {
     "ngrok-skip-browser-warning": "123"
 };
 
-const EditTime = ({time, onTimeUpdated}) => {
+const EditTime = ({time, onTimeUpdated, onCancel}) => {
     const [nome,setNome] = useState('');
 
     useEffect(() => {
@@ -41,6 +41,7 @@ const EditTime = ({time, onTimeUpdated}) => {
                 <label>Nome:</label>
                 <input type="text" value={nome} onChange={(e) => setNome(e.target.value) } />
                 <button type="submit">Salvar time</button>
+                <button type="button" onClick={onCancel}>Cancelar</button>
             </form>
         </>
     );

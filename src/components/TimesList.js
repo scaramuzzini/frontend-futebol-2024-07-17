@@ -52,9 +52,18 @@ function TimesList() {
     },[]);
     return (
         <>
-            <h2>Tabela de times</h2>
-            <AddTime onTimeAdded={handleTimeAdded}/>
-            <EditTime time={editTime} onTimeUpdated={handleTimeUpdate}/>
+            
+            {editTime ? (
+                <>
+                    <h2>Editar Time:</h2>
+                    <EditTime time={editTime} onTimeUpdated={handleTimeUpdate} onCancel={() => setEditTime(null)} />
+                </>
+            ) : (
+                <>
+                    <h2>Novo Time:</h2>
+                    <AddTime onTimeAdded={handleTimeAdded}/>
+                </>
+            )}
             <table>
                 <thead>
                     <tr>
@@ -71,8 +80,8 @@ function TimesList() {
                             <td>{time.nome}</td>
                             <td>{time.titulos}</td>
                             <td>
-                                <button onClick={() => handleDelete(time.id)}>Remover </button>
                                 <button onClick={() => handleEdit(time)}>Editar</button> 
+                                <button onClick={() => handleDelete(time.id)}>Remover </button>
                             </td>
                         </tr>
                     ))}
