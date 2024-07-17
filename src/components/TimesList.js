@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import AddTime from './AddTime';
 
 const headers = {
     "ngrok-skip-browser-warning": "123"
@@ -27,17 +28,24 @@ function TimesList() {
     return (
         <>
             <h2>Tabela de times</h2>
+            <AddTime/>
             <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome do time</th>
-                </tr>
-                {times.map((time) => (
+                <thead>
                     <tr>
-                        <td>{time.id}</td>
-                        <td>{time.nome}</td>
+                        <th>ID</th>
+                        <th>Nome do time</th>
+                        <th>Títulos</th>
                     </tr>
-                ))}
+                </thead>
+                <tbody>
+                    {times.map((time) => (
+                        <tr key={time.id}>
+                            <td>{time.id}</td>
+                            <td>{time.nome}</td>
+                            <td>{time.titulos}</td>
+                        </tr>
+                    ))}
+                </tbody>
             </table>
         </>
     );
